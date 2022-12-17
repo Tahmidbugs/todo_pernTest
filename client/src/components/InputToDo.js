@@ -1,5 +1,9 @@
 import React, { Fragment } from "react";
 
+import axios from "axios";
+
+const api = axios.create({ baseURL: "http://localhost:5000/" });
+
 export default function InputToDo() {
   const [description, setDescription] = React.useState("");
 
@@ -7,10 +11,9 @@ export default function InputToDo() {
     e.preventDefault();
     try {
       const body = { description };
-      const response = await fetch("http://localhost:5000/todos", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
+      console.log(description);
+      const response = await api.post("todos", {
+        description: description,
       });
       console.log(response);
     } catch (err) {
