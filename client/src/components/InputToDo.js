@@ -10,18 +10,17 @@ export default function InputToDo() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const body = { description };
-      console.log(description);
       const response = await api.post("todos", {
         description: description,
       });
       console.log(response);
+      window.location = "/";
     } catch (err) {
       console.error(err.message);
     }
   };
   return (
-    <Fragment>
+    <div style={{ paddingTop: 100 }}>
       <h1 className="text-center mt-5">PERN Todo List</h1>
       <div
         style={{
@@ -41,10 +40,11 @@ export default function InputToDo() {
             }}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            placeholder={"Add Task"}
           />
           <button className="btn btn-success">Add</button>
         </form>
       </div>
-    </Fragment>
+    </div>
   );
 }

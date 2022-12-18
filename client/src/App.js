@@ -1,11 +1,19 @@
 import { React, Fragment } from "react";
 import "./App.css";
 import InputToDo from "./components/InputToDo";
+import ListToDo from "./components/ListToDo";
 function App() {
   return (
-    <Fragment>
+    <div
+      style={{
+        backgroundColor: "black",
+        flex: 1,
+        height: "100vh",
+      }}
+    >
       <InputToDo />
-    </Fragment>
+      <ListToDo />
+    </div>
   );
 }
 
